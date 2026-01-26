@@ -31,8 +31,16 @@
             HeadingLabel = new Label();
             HashLabel = new Label();
             HashComboBox = new ComboBox();
-            MOCLabel = new Label();
-            MOALabel = new Label();
+            CompareButton = new Button();
+            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            SizeNumericUpDown = new NumericUpDown();
+            TitleColumn = new DataGridViewTextBoxColumn();
+            TimeColumn = new DataGridViewTextBoxColumn();
+            CompareColumn = new DataGridViewTextBoxColumn();
+            FoundColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SizeNumericUpDown).BeginInit();
             SuspendLayout();
             // 
             // HeadingLabel
@@ -49,7 +57,7 @@
             // 
             HashLabel.AutoSize = true;
             HashLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            HashLabel.Location = new Point(48, 70);
+            HashLabel.Location = new Point(24, 74);
             HashLabel.Name = "HashLabel";
             HashLabel.Size = new Size(208, 25);
             HashLabel.TabIndex = 1;
@@ -58,44 +66,96 @@
             // HashComboBox
             // 
             HashComboBox.FormattingEnabled = true;
-            HashComboBox.Location = new Point(309, 71);
+            HashComboBox.Items.AddRange(new object[] { "Метод деления", "Метод середины квадрат", "Метод свёртывания", "Метод умножения" });
+            HashComboBox.Location = new Point(238, 75);
             HashComboBox.Name = "HashComboBox";
             HashComboBox.Size = new Size(151, 28);
             HashComboBox.TabIndex = 2;
             // 
-            // MOCLabel
+            // CompareButton
             // 
-            MOCLabel.AutoSize = true;
-            MOCLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            MOCLabel.Location = new Point(320, 125);
-            MOCLabel.Name = "MOCLabel";
-            MOCLabel.Size = new Size(149, 25);
-            MOCLabel.TabIndex = 3;
-            MOCLabel.Text = "Метод цепочек";
+            CompareButton.Location = new Point(345, 397);
+            CompareButton.Name = "CompareButton";
+            CompareButton.Size = new Size(94, 29);
+            CompareButton.TabIndex = 5;
+            CompareButton.Text = "Сравнить";
+            CompareButton.UseVisualStyleBackColor = true;
             // 
-            // MOALabel
+            // dataGridView1
             // 
-            MOALabel.AutoSize = true;
-            MOALabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            MOALabel.Location = new Point(259, 187);
-            MOALabel.Name = "MOALabel";
-            MOALabel.Size = new Size(259, 25);
-            MOALabel.TabIndex = 4;
-            MOALabel.Text = "Метод открытой адресации";
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TitleColumn, TimeColumn, CompareColumn, FoundColumn });
+            dataGridView1.Location = new Point(39, 187);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(687, 188);
+            dataGridView1.TabIndex = 6;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(471, 74);
+            label1.Name = "label1";
+            label1.Size = new Size(144, 25);
+            label1.TabIndex = 7;
+            label1.Text = "Размер массива";
+            // 
+            // SizeNumericUpDown
+            // 
+            SizeNumericUpDown.Location = new Point(621, 74);
+            SizeNumericUpDown.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            SizeNumericUpDown.Name = "SizeNumericUpDown";
+            SizeNumericUpDown.Size = new Size(150, 27);
+            SizeNumericUpDown.TabIndex = 8;
+            SizeNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            // 
+            // TitleColumn
+            // 
+            TitleColumn.HeaderText = "Метод разрешения коллизий";
+            TitleColumn.MinimumWidth = 6;
+            TitleColumn.Name = "TitleColumn";
+            TitleColumn.Width = 225;
+            // 
+            // TimeColumn
+            // 
+            TimeColumn.HeaderText = "Время";
+            TimeColumn.MinimumWidth = 6;
+            TimeColumn.Name = "TimeColumn";
+            TimeColumn.Width = 125;
+            // 
+            // CompareColumn
+            // 
+            CompareColumn.HeaderText = "Сравнения";
+            CompareColumn.MinimumWidth = 6;
+            CompareColumn.Name = "CompareColumn";
+            CompareColumn.Width = 125;
+            // 
+            // FoundColumn
+            // 
+            FoundColumn.HeaderText = "найдено";
+            FoundColumn.MinimumWidth = 6;
+            FoundColumn.Name = "FoundColumn";
+            FoundColumn.Width = 125;
             // 
             // Article_Form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(MOALabel);
-            Controls.Add(MOCLabel);
+            Controls.Add(SizeNumericUpDown);
+            Controls.Add(label1);
+            Controls.Add(dataGridView1);
+            Controls.Add(CompareButton);
             Controls.Add(HashComboBox);
             Controls.Add(HashLabel);
             Controls.Add(HeadingLabel);
             Name = "Article_Form";
             Text = "Article_Form";
             Load += Article_Form_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SizeNumericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,7 +165,13 @@
         private Label HeadingLabel;
         private Label HashLabel;
         private ComboBox HashComboBox;
-        private Label MOCLabel;
-        private Label MOALabel;
+        private Button CompareButton;
+        private DataGridView dataGridView1;
+        private Label label1;
+        private NumericUpDown SizeNumericUpDown;
+        private DataGridViewTextBoxColumn TitleColumn;
+        private DataGridViewTextBoxColumn TimeColumn;
+        private DataGridViewTextBoxColumn CompareColumn;
+        private DataGridViewTextBoxColumn FoundColumn;
     }
 }
