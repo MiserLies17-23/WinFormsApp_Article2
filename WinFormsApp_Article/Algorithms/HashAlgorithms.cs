@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinFormsApp_Article.Algorithms
 {
@@ -12,95 +8,65 @@ namespace WinFormsApp_Article.Algorithms
     public static class HashAlgorithms
     {
         /// <summary>
-        /// АЛГОРИТМ ХЕШИРОВАНИЯ МЕТОДОМ УМНОЖЕНИЯ
+        /// Константа умножения
         /// </summary>
-        /// <param name="data"> массив ключей </param>
-        /// <param name="range"> длина массива </param>
-        /// <returns> массив частот </returns>
-        public static int[] MultipleMethod(int[] data, int range)
+        private static readonly double A = (Math.Sqrt(5) - 1) / 2;
+        
+        /// <summary>
+        /// Метод деления
+        /// </summary>
+        /// <param name="key"> ключ </param>
+        /// <param name="div"> простой делитель, близкий к длине массива </param>
+        /// <returns> значение хеша </returns>
+        public static int DivisionMethod(int key, int div)
         {
-            int[] outputArray = new int[range]; // выходной массив частот
-            double permanent = (Math.Sqrt(5) - 1) / 2; // оптимальная константа для умножения
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                double fractional = (data[i] * permanent) % 1; // вычисление дробной части
-                int hash = (int)Math.Floor(range * fractional); // расчет хэша
-                outputArray[hash]++; // подсчет количества встречающихся частот
-            }
-            return outputArray;
+            return key % div;
         }
 
         /// <summary>
-        /// АЛГОРИТМ ХЕШИРОВАНИЯ МЕТОДОМ ДЕЛЕНИЯ
+        /// Метод середины квадрата
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="range"></param>
-        /// <returns></returns>
-        public static int[] DivisionMethod(int[] data, int range)
+        /// <param name="key"> ключ </param>
+        /// <param name="size"> длина массива </param>
+        /// <returns> значение хеша </returns>
+        public static int MidsquareMethod(int key, int size)
         {
-            int[] outputArray = new int[range];
+            long squared = (long)Math.Pow(key, 2);
+            if (squared < size) return (int)squared;
 
-            for (int i = 0; i < data.Length; i++)
-            {
-                int hash = data[i] % range;
-                outputArray[hash]++;
-            }
-            return outputArray;
+            long squredSize = (long)Math.Ceiling(Math.Log10(squared));
+            squared /= (long)Math.Pow(10, (squredSize - (long)Math.Log10(size)) / 2);
+            int hash = (int)squared % (int)Math.Pow(10, Math.Log10(size));
+            return hash;
         }
 
         /// <summary>
-        /// АЛГОРИТМ ХЕШИРОВАНИЯ МЕТОДОМ СВЕРТЫВАНИЯ
+        /// Метод свёртывания
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="range"></param>
-        /// <returns></returns>
-        public static int[] FoldingMethod(int[] data, int range)
+        /// <param name="key"> ключ </param>
+        /// <param name="size"> длина массива </param>
+        /// <returns> значение хеша </returns>
+        public static int FoldingMethod(int key, int size)
         {
-            int partSize = 3; // количество цифр в одной части
-            int[] outputArray = new int[range];
-
-            for (int i = 0; i < data.Length; i++)
+            int sum = 0;
+            while (key > 0)
             {
-                int sum = 0; // сумма
-                int temp = data[i]; // текущий ключ
-                while (temp > 0)
-                {
-                    int part = temp % (int)Math.Pow(10, partSize); // выделение части
-                    sum += part;
-                    temp /= (int)Math.Pow(10, partSize);
-                }
-                int hash = sum % range;
-                outputArray[hash]++;
+                sum += key % size;
+                key /= size;
             }
-            return outputArray;
+            return sum % size;
         }
 
         /// <summary>
-        /// АЛГОРИТМ ХЕШИРОВАНИЯ МЕТОДОМ СЕРЕДИНЫ КВАДРАТА
+        /// Метод умножения 
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="range"></param>
-        /// <returns></returns>
-        public static int[] MidSquareMethod(int[] data, int range)
+        /// <param name="key"> ключ </param>
+        /// <param name="size"> длина массива </param>
+        /// <returns> значение хеша </returns>
+        public static int MultiplicationMethod(int key, int size)
         {
-            int[] outputArray = new int[range];
-            int digits = 3; // количество средних цифр из квадрата числа
-
-            for (int i = 0; i < data.Length; i++)
-            {
-                long squared = (long)data[i] * data[i]; // квадрат ключа
-                string s = squared.ToString(); // перевод в строку
-
-                // вычисление середины строки
-                int start = Math.Max(0, (s.Length - digits) / 2);
-                string middle = s.Substring(start, Math.Min(digits, s.Length - start));
-                int middleValue = int.Parse(middle);
-
-                int hash = middleValue % range;
-                outputArray[hash]++;
-            }
-            return outputArray;
+            double fraction = (double)(key * A) % 1;
+            return (int)(fraction * size);
         }
     }
 }
