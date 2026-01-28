@@ -37,12 +37,12 @@
             HashComboBox = new ComboBox();
             CompareButton = new Button();
             dataGridView1 = new DataGridView();
-            SizeLabel = new Label();
-            SizeNumericUpDown = new NumericUpDown();
             TitleColumn = new DataGridViewTextBoxColumn();
             TimeColumn = new DataGridViewTextBoxColumn();
             CompareColumn = new DataGridViewTextBoxColumn();
             FoundColumn = new DataGridViewTextBoxColumn();
+            SizeLabel = new Label();
+            SizeNumericUpDown = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SizeNumericUpDown).BeginInit();
             SuspendLayout();
@@ -70,7 +70,7 @@
             // HashComboBox
             // 
             HashComboBox.FormattingEnabled = true;
-            HashComboBox.Items.AddRange(new object[] { "Метод деления", "Метод середины квадрат", "Метод свёртывания", "Метод умножения" });
+            HashComboBox.Items.AddRange(new object[] { "Метод деления", "Метод середины квадрата", "Метод свёртывания", "Метод умножения" });
             HashComboBox.Location = new Point(261, 75);
             HashComboBox.Name = "HashComboBox";
             HashComboBox.Size = new Size(151, 28);
@@ -96,25 +96,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(603, 195);
             dataGridView1.TabIndex = 6;
-            // 
-            // SizeLabel
-            // 
-            SizeLabel.AutoSize = true;
-            SizeLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            SizeLabel.Location = new Point(450, 76);
-            SizeLabel.Name = "SizeLabel";
-            SizeLabel.Size = new Size(144, 25);
-            SizeLabel.TabIndex = 7;
-            SizeLabel.Text = "Размер массива";
-            // 
-            // SizeNumericUpDown
-            // 
-            SizeNumericUpDown.Location = new Point(600, 78);
-            SizeNumericUpDown.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            SizeNumericUpDown.Name = "SizeNumericUpDown";
-            SizeNumericUpDown.Size = new Size(150, 27);
-            SizeNumericUpDown.TabIndex = 8;
-            SizeNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
             // TitleColumn
             // 
@@ -151,6 +132,25 @@
             FoundColumn.MinimumWidth = 6;
             FoundColumn.Name = "FoundColumn";
             FoundColumn.Width = 125;
+            // 
+            // SizeLabel
+            // 
+            SizeLabel.AutoSize = true;
+            SizeLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            SizeLabel.Location = new Point(450, 76);
+            SizeLabel.Name = "SizeLabel";
+            SizeLabel.Size = new Size(144, 25);
+            SizeLabel.TabIndex = 7;
+            SizeLabel.Text = "Размер массива";
+            // 
+            // SizeNumericUpDown
+            // 
+            SizeNumericUpDown.Location = new Point(600, 78);
+            SizeNumericUpDown.Maximum = new decimal(new int[] { 10000000, 0, 0, 0 });
+            SizeNumericUpDown.Name = "SizeNumericUpDown";
+            SizeNumericUpDown.Size = new Size(150, 27);
+            SizeNumericUpDown.TabIndex = 8;
+            SizeNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
             // 
             // Article_Form
             // 
