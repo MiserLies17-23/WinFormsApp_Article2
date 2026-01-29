@@ -32,20 +32,23 @@ namespace WinFormsApp_Article
         {
             try
             {
-                Func<int, int, int> currentMethod = getCurrentMethod();
+                Func<int, int, int> currentMethod = GetCurrentMethod();
                 int size = (int)SizeNumericUpDown.Value;
                 
-                DataService service = new DataService();
+                DataService service = new();
                 var results = service.Run(size, currentMethod);
                 DisplayData(results);
             } 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,
+                    "Ошибка!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
             }
         }
 
-        private Func<int, int, int> getCurrentMethod()
+        private Func<int, int, int> GetCurrentMethod()
         {
             string methodName = HashComboBox.Text;
             return methodName switch

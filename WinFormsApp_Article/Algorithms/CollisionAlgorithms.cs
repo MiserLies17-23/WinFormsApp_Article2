@@ -22,7 +22,7 @@ public static class CollisionAlgorithms
         List<int>[] moc, Func<int, int, int> method)
     {
         int comparisons = 0, founds = 0;
-        int startTime = 0;
+        int startTime = Environment.TickCount;
         foreach (int num in array)
         {
             int hash = method(num, array.Length);
@@ -89,6 +89,7 @@ public static class CollisionAlgorithms
         return (comparisons, founds, endTime);
     }
 
+    // Исправить!
     public static (int[], int) QuadraticProbingInsert(int[] array,
         Func<int, int, int> method)
     {

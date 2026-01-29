@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 /// <summary>
 /// Сервис - основной слой бизнес-логики
 /// </summary>
@@ -10,7 +11,8 @@ public class DataService
 
         results.Add(GetChainMethodResults(array, method));
         results.Add(GetLinerProbingHenerate(array, method));
-        results.Add(GetQudraticProbingResults(array, method));
+        //results.Add(GetQudraticProbingResults(array, method));
+        results.Add(GetDoubleHashingResults(array, method));
         return results;
     }
 
@@ -24,6 +26,21 @@ public class DataService
         return new MethodResults
         {
             AlgorithmName = "Метод цепочек",
+            InsertTime = insertTime,
+            SearchTime = searchTime,
+            Сomparisons = comparisons,
+        };
+    }
+
+    private MethodResults GetLinerProbingHenerate(int[] array, Func<int, int, int> method)
+    {
+        (int[] moa, int insertTime) = CollisionAlgorithms.LinerProbingInsert(array, 
+            method);
+        (int comparisons, int founds, int searchTime) = CollisionAlgorithms.LinerProbingSearch(
+            array, moa, method);
+        return new MethodResults
+        {
+            AlgorithmName = "Линейное пробирование",
             InsertTime = insertTime,
             SearchTime = searchTime,
             Сomparisons = comparisons,
@@ -44,15 +61,17 @@ public class DataService
             Сomparisons = comparisons,
         };
     }
-    private MethodResults GetLinerProbingHenerate(int[] array, Func<int, int, int> method)
+
+    private MethodResults GetDoubleHashingResults(int[] array, 
+        Func<int, int, int> method1)
     {
-        (int[] moa, int insertTime) = CollisionAlgorithms.LinerProbingInsert(array, 
-            method);
-        (int comparisons, int founds, int searchTime) = CollisionAlgorithms.LinerProbingSearch(
-            array, moa, method);
+        (int[] moa, int insertTime) = CollisionAlgorithms.DoubleHashingInsert(array,
+            method1, method2);
+        (int comparisons, int founds, int searchTime) = CollisionAlgorithms.DoubleHashingSearch(
+            array, moa, method1, method2);
         return new MethodResults
         {
-            AlgorithmName = "Линейное пробирование",
+            AlgorithmName = "Двойное хеширование",
             InsertTime = insertTime,
             SearchTime = searchTime,
             Сomparisons = comparisons,
