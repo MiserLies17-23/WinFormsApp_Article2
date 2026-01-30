@@ -1,12 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinFormsApp_Article.Utils
+public static class GetMethodsUtil
 {
-    internal class GetMethodsUtil
+    public static Func<int, int, int> GetCurrentMethod(string methodName)
     {
+        return methodName switch
+        {
+            "Метод деления" => 
+                (Func<int, int, int>)HashAlgorithms.DivisionMethod,
+            "Метод середины квадрата" => 
+                (Func<int, int, int>)HashAlgorithms.MidsquareMethod,
+            "Метод умножения" => 
+                (Func<int, int, int>)HashAlgorithms.MultiplicationMethod,
+            "Метод свёртывания" => 
+                (Func<int, int, int>)HashAlgorithms.FoldingMethod,
+            _ => throw new ArgumentException("Метод не распознан!"),
+        };
+    }
+
+    public static Func<int, int, int> GetSecondMethod(Func<int, int, int> method1)
+    {
+        string methodName = method1.Method.Name;
+
+        return methodName switch
+        {
+            nameof(HashAlgorithms.DivisionMethod) => HashAlgorithms.MidsquareMethod,
+            nameof(HashAlgorithms.MidsquareMethod) => HashAlgorithms.FoldingMethod,
+            nameof(HashAlgorithms.FoldingMethod) => HashAlgorithms.MultiplicationMethod,
+            nameof(HashAlgorithms.MultiplicationMethod) => HashAlgorithms.DivisionMethod,
+            _ => throw new ArgumentException("Неизвестный метод хеширования")
+        };
     }
 }
+

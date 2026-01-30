@@ -8,12 +8,12 @@ namespace WinFormsApp_Article
     /// </summary>
     public partial class Article_Form : Form
     {
-
+        
         public Article_Form()
         {
             InitializeComponent();
         }
-
+        
         private void Article_Form_Load(object sender, EventArgs e)
         {
             DataInitilize();
@@ -32,7 +32,7 @@ namespace WinFormsApp_Article
         {
             try
             {
-                Func<int, int, int> currentMethod = GetCurrentMethod();
+                Func<int, int, int> currentMethod = GetMethodsUtil.GetCurrentMethod(HashComboBox.Text);
                 int size = (int)SizeNumericUpDown.Value;
                 
                 DataService service = new();
@@ -41,24 +41,11 @@ namespace WinFormsApp_Article
             } 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,
+                MessageBox.Show($"{ex.Message} {ex.TargetSite} {ex.StackTrace}",
                     "Ошибка!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
             }
-        }
-
-        private Func<int, int, int> GetCurrentMethod()
-        {
-            string methodName = HashComboBox.Text;
-            return methodName switch
-            {
-                "Метод деления" => (Func<int, int, int>)Algorithms.HashAlgorithms.DivisionMethod,
-                "Метод середины квадрата" => (Func<int, int, int>)Algorithms.HashAlgorithms.MidsquareMethod,
-                "Метод умножения" => (Func<int, int, int>)Algorithms.HashAlgorithms.MultiplicationMethod,
-                "Метод свёртывания" => (Func<int, int, int>)Algorithms.HashAlgorithms.FoldingMethod,
-                _ => throw new ArgumentException("Метод не распознан!"),
-            };
         }
 
         private void DisplayData(List<MethodResults> results)

@@ -12,6 +12,8 @@ public static class CollisionAlgorithms
         foreach (int num in array)
         {
             int hash = method(num, array.Length);
+            //if (hash > moc.Length)
+            //    throw new ArgumentException($"Ошибка! Hash = {hash}");
             moc[hash].Add(num);
         }
         int endTime = Environment.TickCount - startTime;

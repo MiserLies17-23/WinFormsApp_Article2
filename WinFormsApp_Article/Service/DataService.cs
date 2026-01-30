@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+
 /// <summary>
 /// Сервис - основной слой бизнес-логики
 /// </summary>
@@ -9,10 +10,10 @@ public class DataService
     {
         List<MethodResults> results = [];
 
-        results.Add(GetChainMethodResults(array, method));
+        //results.Add(GetChainMethodResults(array, method));
         results.Add(GetLinerProbingHenerate(array, method));
         //results.Add(GetQudraticProbingResults(array, method));
-        results.Add(GetDoubleHashingResults(array, method));
+        //results.Add(GetDoubleHashingResults(array, method));
         return results;
     }
 
@@ -65,6 +66,7 @@ public class DataService
     private MethodResults GetDoubleHashingResults(int[] array, 
         Func<int, int, int> method1)
     {
+        Func<int, int, int> method2 = GetMethodsUtil.GetSecondMethod(method1);
         (int[] moa, int insertTime) = CollisionAlgorithms.DoubleHashingInsert(array,
             method1, method2);
         (int comparisons, int founds, int searchTime) = CollisionAlgorithms.DoubleHashingSearch(
@@ -83,7 +85,7 @@ public class DataService
         Random random = new();
         int[] array = new int[size];
         for (int i = 0; i < array.Length; i++) 
-            array[i] = random.Next();
+            array[i] = random.Next(0, (int)Math.Pow(10, 7));
         return array;
     }
 
