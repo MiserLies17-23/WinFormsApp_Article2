@@ -37,12 +37,13 @@
             HashComboBox = new ComboBox();
             CompareButton = new Button();
             dataGridView1 = new DataGridView();
-            TitleColumn = new DataGridViewTextBoxColumn();
-            TimeColumn = new DataGridViewTextBoxColumn();
-            CompareColumn = new DataGridViewTextBoxColumn();
-            FoundColumn = new DataGridViewTextBoxColumn();
             SizeLabel = new Label();
             SizeNumericUpDown = new NumericUpDown();
+            TitleColumn = new DataGridViewTextBoxColumn();
+            InsertTimeColumn = new DataGridViewTextBoxColumn();
+            SearchTimeColumn = new DataGridViewTextBoxColumn();
+            CompareColumn = new DataGridViewTextBoxColumn();
+            MemoryColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SizeNumericUpDown).BeginInit();
             SuspendLayout();
@@ -89,49 +90,13 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TitleColumn, TimeColumn, CompareColumn, FoundColumn });
-            dataGridView1.Location = new Point(77, 181);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TitleColumn, InsertTimeColumn, SearchTimeColumn, CompareColumn, MemoryColumn });
+            dataGridView1.Location = new Point(47, 170);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(603, 195);
+            dataGridView1.Size = new Size(728, 195);
             dataGridView1.TabIndex = 6;
-            // 
-            // TitleColumn
-            // 
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            TitleColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            TitleColumn.HeaderText = "Метод разрешения коллизий";
-            TitleColumn.MinimumWidth = 6;
-            TitleColumn.Name = "TitleColumn";
-            TitleColumn.Width = 225;
-            // 
-            // TimeColumn
-            // 
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            TimeColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            TimeColumn.HeaderText = "Время вставки";
-            TimeColumn.MinimumWidth = 6;
-            TimeColumn.Name = "TimeColumn";
-            TimeColumn.Width = 125;
-            // 
-            // CompareColumn
-            // 
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            CompareColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            CompareColumn.HeaderText = "Время поиска";
-            CompareColumn.MinimumWidth = 6;
-            CompareColumn.Name = "CompareColumn";
-            CompareColumn.Width = 125;
-            // 
-            // FoundColumn
-            // 
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            FoundColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            FoundColumn.HeaderText = "Сравнения";
-            FoundColumn.MinimumWidth = 6;
-            FoundColumn.Name = "FoundColumn";
-            FoundColumn.Width = 125;
             // 
             // SizeLabel
             // 
@@ -151,6 +116,49 @@
             SizeNumericUpDown.Size = new Size(150, 27);
             SizeNumericUpDown.TabIndex = 8;
             SizeNumericUpDown.Value = new decimal(new int[] { 1000, 0, 0, 0 });
+            // 
+            // TitleColumn
+            // 
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            TitleColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            TitleColumn.HeaderText = "Метод разрешения коллизий";
+            TitleColumn.MinimumWidth = 6;
+            TitleColumn.Name = "TitleColumn";
+            TitleColumn.Width = 225;
+            // 
+            // InsertTimeColumn
+            // 
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            InsertTimeColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            InsertTimeColumn.HeaderText = "Время вставки";
+            InsertTimeColumn.MinimumWidth = 6;
+            InsertTimeColumn.Name = "InsertTimeColumn";
+            InsertTimeColumn.Width = 125;
+            // 
+            // SearchTimeColumn
+            // 
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            SearchTimeColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            SearchTimeColumn.HeaderText = "Время поиска";
+            SearchTimeColumn.MinimumWidth = 6;
+            SearchTimeColumn.Name = "SearchTimeColumn";
+            SearchTimeColumn.Width = 125;
+            // 
+            // CompareColumn
+            // 
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            CompareColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            CompareColumn.HeaderText = "Сравнения";
+            CompareColumn.MinimumWidth = 6;
+            CompareColumn.Name = "CompareColumn";
+            CompareColumn.Width = 125;
+            // 
+            // MemoryColumn
+            // 
+            MemoryColumn.HeaderText = "Память (кб)";
+            MemoryColumn.MinimumWidth = 6;
+            MemoryColumn.Name = "MemoryColumn";
+            MemoryColumn.Width = 125;
             // 
             // Article_Form
             // 
@@ -183,8 +191,9 @@
         private Label SizeLabel;
         private NumericUpDown SizeNumericUpDown;
         private DataGridViewTextBoxColumn TitleColumn;
-        private DataGridViewTextBoxColumn TimeColumn;
+        private DataGridViewTextBoxColumn InsertTimeColumn;
+        private DataGridViewTextBoxColumn SearchTimeColumn;
         private DataGridViewTextBoxColumn CompareColumn;
-        private DataGridViewTextBoxColumn FoundColumn;
+        private DataGridViewTextBoxColumn MemoryColumn;
     }
 }

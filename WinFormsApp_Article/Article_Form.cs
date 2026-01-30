@@ -35,7 +35,7 @@ namespace WinFormsApp_Article
                 Func<int, int, int> currentMethod = GetMethodsUtil.GetCurrentMethod(HashComboBox.Text);
                 int size = (int)SizeNumericUpDown.Value;
                 
-                DataService service = new();
+                MainService service = new();
                 var results = service.Run(size, currentMethod);
                 DisplayData(results);
             } 
@@ -57,7 +57,8 @@ namespace WinFormsApp_Article
                     result.AlgorithmName,
                     result.InsertTime,
                     result.SearchTime,
-                    result.Сomparisons
+                    result.Сomparisons,
+                    result.TotalMemory
                 );
             }
         }

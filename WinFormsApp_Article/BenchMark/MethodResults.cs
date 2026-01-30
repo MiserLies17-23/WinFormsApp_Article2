@@ -4,9 +4,10 @@
 public class MethodResults
 {
     public string? AlgorithmName { get; set; }
-    public int InsertTime { get; set; }
-    public int SearchTime { get; set; }
+    public long InsertTime { get; set; }
+    public long SearchTime { get; set; }
     public int Сomparisons { get; set; }
+    public float TotalMemory { get; set; }
 
 }
 
