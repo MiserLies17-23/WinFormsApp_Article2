@@ -11,7 +11,6 @@ namespace WinFormsApp_Article
     /// </summary>
     public partial class Article_Form : Form
     {
-        
         public Article_Form()
         {
             InitializeComponent();
@@ -47,7 +46,8 @@ namespace WinFormsApp_Article
                 MessageBox.Show($"{ex.Message} {ex.TargetSite} {ex.StackTrace}",
                     "Ошибка!",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Asterisk);
+                    MessageBoxIcon.Asterisk
+                );
             }
         }
 

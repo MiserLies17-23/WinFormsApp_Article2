@@ -1,6 +1,5 @@
 ﻿namespace WinFormsApp_Article.Algorithms
 {
-    public delegate void MeasureComparisons();
     public static class CollisionAlgorithms
     {
         public static List<int>[] ChainMethodInsert(int[] array,
@@ -19,7 +18,7 @@
 
         public static void ChainMethodSearch(int[] array,
             List<int>[] moc, Func<int, int, int> method,
-            MeasureComparisons mc)
+            Action mc)
         {
             foreach (int num in array)
             {
@@ -56,7 +55,7 @@
         }
 
         public static void LinerProbingSearch(int[] array, int[] moa,
-            Func<int, int, int> method, MeasureComparisons mc)
+            Func<int, int, int> method, Action mc)
         {
             foreach (int num in array)
             {
@@ -64,16 +63,15 @@
 
                 for (int i = 0; i < moa.Length; i++)
                 {
-                    mc(); // Заменить на делегат
+                    mc(); 
                     if (num == moa[hash % moa.Length])
                         break;
-
                     hash++;
                 }
                 mc();
             }
         }
-        // исправить
+        
         public static int[] QuadraticProbingInsert(int[] array,
             Func<int, int, int> method, int size)
         {
@@ -100,7 +98,7 @@
         }
 
         public static void QuadraticProbingSearch(int[] array, int[] moa,
-            Func<int, int, int> method, MeasureComparisons mc)
+            Func<int, int, int> method, Action mc)
         {
             foreach (int num in array)
             {
@@ -109,7 +107,7 @@
                 while (item < moa.Length)
                 {
                     index = (hash + item * item) % moa.Length;
-                    mc(); // Заменить на делегат
+                    mc(); 
                     if (num == moa[index])
                         break;
                     item++;
@@ -141,7 +139,7 @@
 
         public static void DoubleHashingSearch(int[] array, int[] moa,
             Func<int, int, int> method1, Func<int, int, int> method2,
-            MeasureComparisons mc)
+            Action mc)
         {
             foreach (int num in array)
             {
@@ -149,7 +147,7 @@
 
                 for (int i = 0; i < moa.Length; i++)
                 {
-                    mc(); // Заменить на делегат
+                    mc(); 
                     if (num == moa[hash % moa.Length])
                         break;
                     hash++;

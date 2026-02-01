@@ -27,7 +27,7 @@ namespace WinFormsApp_Article.Services
                 AlgorithmName = "Метод цепочек"
             };
             List<int>[] moc = [];
-            MeasureComparisons mc = () => chainResults.Сomparisons++;
+            Action mc = () => chainResults.Сomparisons++;
             chainResults.TotalMemory = MeasurementServices.MeasureMemory(() =>
             {
                 chainResults.InsertTime = MeasurementServices.MeasureTime(() =>
@@ -37,7 +37,11 @@ namespace WinFormsApp_Article.Services
 
                 chainResults.SearchTime = MeasurementServices.MeasureTime(() =>
                 {
-                    CollisionAlgorithms.ChainMethodSearch(array, moc, method, mc);
+                    CollisionAlgorithms.ChainMethodSearch(array, moc, method, mc
+                    //() => 
+                    //MeasurementServices.MeasureComparisons(chainResults.Сomparisons);
+                    
+                    );
                 });
             });
             return chainResults;
@@ -50,7 +54,7 @@ namespace WinFormsApp_Article.Services
                 AlgorithmName = "Линейное пробирование"
             };
             int[] moa = [];
-            MeasureComparisons mc = () => linnerResults.Сomparisons++;
+            Action mc = () => linnerResults.Сomparisons++;
             linnerResults.TotalMemory = MeasurementServices.MeasureMemory(() =>
             {
                 linnerResults.InsertTime = MeasurementServices.MeasureTime(() =>
@@ -74,7 +78,7 @@ namespace WinFormsApp_Article.Services
                 AlgorithmName = "Квадратичное пробирование"
             };
             int[] moa = [];
-            MeasureComparisons mc = () => quadraticResults.Сomparisons++;
+            Action mc = () => quadraticResults.Сomparisons++;
             quadraticResults.TotalMemory = MeasurementServices.MeasureMemory(() =>
             {
                 quadraticResults.InsertTime = MeasurementServices.MeasureTime(() =>
@@ -100,7 +104,7 @@ namespace WinFormsApp_Article.Services
                 AlgorithmName = "Двойное хеширование"
             };
             int[] moa = [];
-            MeasureComparisons mc = () => doubleHashingResults.Сomparisons++;
+            Action mc = () => doubleHashingResults.Сomparisons++;
             doubleHashingResults.TotalMemory = MeasurementServices.MeasureMemory(() =>
             {
                 doubleHashingResults.InsertTime = MeasurementServices.MeasureTime(() =>

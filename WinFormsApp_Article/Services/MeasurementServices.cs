@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using WinFormsApp_Article.Algorithms;
 
 namespace WinFormsApp_Article.Services
 {
@@ -27,9 +28,9 @@ namespace WinFormsApp_Article.Services
                                            // Для секунд нужно поделить на Stopwatch.Frequency
         }
 
-        public static int MeasureComparisoms(int comparisons)
+        public static void MeasureComparisons(int comparisons)
         {
-            return comparisons++;
+            comparisons++;  
         }
     }
 }
