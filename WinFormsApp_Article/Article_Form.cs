@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using WinFormsApp_Article.BenchMark;
+using WinFormsApp_Article.Services;
+using WinFormsApp_Article.Utils;
 
 namespace WinFormsApp_Article
 {

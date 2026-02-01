@@ -1,34 +1,37 @@
-﻿using System;
-public static class GetMethodsUtil
+﻿using WinFormsApp_Article.Algorithms;
+
+namespace WinFormsApp_Article.Utils
 {
-    public static Func<int, int, int> GetCurrentMethod(string methodName)
+    public static class GetMethodsUtil
     {
-        return methodName switch
+        public static Func<int, int, int> GetCurrentMethod(string methodName)
         {
-            "Метод деления" => 
-                (Func<int, int, int>)HashAlgorithms.DivisionMethod,
-            "Метод середины квадрата" => 
-                (Func<int, int, int>)HashAlgorithms.MidsquareMethod,
-            "Метод умножения" => 
-                (Func<int, int, int>)HashAlgorithms.MultiplicationMethod,
-            "Метод свёртывания" => 
-                (Func<int, int, int>)HashAlgorithms.FoldingMethod,
-            _ => throw new ArgumentException("Метод не распознан!"),
-        };
-    }
+            return methodName switch
+            {
+                "Метод деления" =>
+                    HashAlgorithms.DivisionMethod,
+                "Метод середины квадрата" =>
+                    HashAlgorithms.MidsquareMethod,
+                "Метод умножения" =>
+                    HashAlgorithms.MultiplicationMethod,
+                "Метод свёртывания" =>
+                    HashAlgorithms.FoldingMethod,
+                _ => throw new ArgumentException("Метод не распознан!"),
+            };
+        }
 
-    public static Func<int, int, int> GetSecondMethod(Func<int, int, int> method1)
-    {
-        string methodName = method1.Method.Name;
-
-        return methodName switch
+        public static Func<int, int, int> GetSecondMethod(Func<int, int, int> method1)
         {
-            nameof(HashAlgorithms.DivisionMethod) => HashAlgorithms.MidsquareMethod,
-            nameof(HashAlgorithms.MidsquareMethod) => HashAlgorithms.FoldingMethod,
-            nameof(HashAlgorithms.FoldingMethod) => HashAlgorithms.MultiplicationMethod,
-            nameof(HashAlgorithms.MultiplicationMethod) => HashAlgorithms.DivisionMethod,
-            _ => throw new ArgumentException("Неизвестный метод хеширования")
-        };
+            string methodName = method1.Method.Name;
+
+            return methodName switch
+            {
+                nameof(HashAlgorithms.DivisionMethod) => HashAlgorithms.MidsquareMethod,
+                nameof(HashAlgorithms.MidsquareMethod) => HashAlgorithms.FoldingMethod,
+                nameof(HashAlgorithms.FoldingMethod) => HashAlgorithms.MultiplicationMethod,
+                nameof(HashAlgorithms.MultiplicationMethod) => HashAlgorithms.DivisionMethod,
+                _ => throw new ArgumentException("Неизвестный метод хеширования")
+            };
+        }
     }
 }
-
