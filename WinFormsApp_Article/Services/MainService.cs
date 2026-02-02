@@ -5,10 +5,17 @@ using WinFormsApp_Article.Utils;
 namespace WinFormsApp_Article.Services
 {
     /// <summary>
-    /// Сервис - основной слой бизнес-логики
+    /// Главный сервис - основной слой бизнес-логики
     /// </summary>
     public class MainService
     {
+        /// <summary>
+        /// Метод для получения списка всех результатов работы 
+        /// методов разрешения коллизий
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> список результатов </returns>
         private List<MethodResults> GetAllResults(int[] array, Func<int, int, int> method)
         {
             List<MethodResults> results = [];
@@ -19,7 +26,13 @@ namespace WinFormsApp_Article.Services
             results.Add(GetDoubleHashingResults(array, method));
             return results;
         }
-
+        
+        /// <summary>
+        /// Метод для получения результатов работы метода цепочек
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> результаты работы </returns>
         private MethodResults GetChainMethodResults(int[] array, Func<int, int, int> method)
         {
             MethodResults chainResults = new()
@@ -37,15 +50,18 @@ namespace WinFormsApp_Article.Services
 
                 chainResults.SearchTime = MeasurementServices.MeasureTime(() =>
                 {
-                    CollisionAlgorithms.ChainMethodSearch(array, moc, method, mc
-                    //() => 
-                    //MeasurementServices.MeasureComparisons(chainResults.Сomparisons);
-                    );
+                    CollisionAlgorithms.ChainMethodSearch(array, moc, method, mc);
                 });
             });
             return chainResults;
         }
 
+        /// <summary>
+        /// Метод для получения результатов работы метода линейного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> результаты работы </returns>
         private MethodResults GetLinerProbingHenerate(int[] array, Func<int, int, int> method)
         {
             MethodResults linnerResults = new()
@@ -70,6 +86,12 @@ namespace WinFormsApp_Article.Services
             return linnerResults;
         }
 
+        /// <summary>
+        /// Метод для получения результатов работы метода квадратичного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> результаты работы </returns>
         private MethodResults GetQudraticProbingResults(int[] array, Func<int, int, int> method)
         {
             MethodResults quadraticResults = new()
@@ -95,6 +117,12 @@ namespace WinFormsApp_Article.Services
             return quadraticResults;
         }
 
+        /// <summary>
+        /// Метод для получения результатов работы метода двойного хеширования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method1"> первый метод хеширования </param>
+        /// <returns> результаты хеширования </returns>
         private MethodResults GetDoubleHashingResults(int[] array,
             Func<int, int, int> method1)
         {
@@ -109,7 +137,9 @@ namespace WinFormsApp_Article.Services
                 doubleHashingResults.InsertTime = MeasurementServices.MeasureTime(() =>
                 {
                     moa = CollisionAlgorithms.DoubleHashingInsert(array,
-                        method1, GetMethodsUtil.GetSecondMethod(method1));
+                        method1, 
+                        GetMethodsUtil.GetSecondMethod(method1)); // вспомогательная утилита
+                                                                  // сама определит второй метод
                 });
 
                 doubleHashingResults.SearchTime = MeasurementServices.MeasureTime(() =>
@@ -122,6 +152,11 @@ namespace WinFormsApp_Article.Services
             return doubleHashingResults;
         }
 
+        /// <summary>
+        /// Метод для генерации массива чисел
+        /// </summary>
+        /// <param name="size"> размер массива </param>
+        /// <returns> массив псевдослучайных чисел </returns>
         private int[] ArrayGenerate(int size)
         {
             Random random = new();
@@ -131,6 +166,12 @@ namespace WinFormsApp_Article.Services
             return array;
         }
 
+        /// <summary>
+        /// Основной метод, через который с сервисо взаимодействуют сторонние компоненты
+        /// </summary>
+        /// <param name="size"> размер массива </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> список всех результатов </returns>
         public List<MethodResults> Run(int size, Func<int, int, int> method)
         {
             int[] array = ArrayGenerate(size);

@@ -1,7 +1,16 @@
 ﻿namespace WinFormsApp_Article.Algorithms
 {
+    /// <summary>
+    /// Статический класс, представляющий методы разрешения коллизий
+    /// </summary>
     public static class CollisionAlgorithms
     {
+        /// <summary>
+        /// Метод, реализующий вставку элементов для метода цепочек
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> массив списков (цепочки) </returns>
         public static List<int>[] ChainMethodInsert(int[] array,
             Func<int, int, int> method)
         {
@@ -16,6 +25,13 @@
             return moc;
         }
 
+        /// <summary>
+        /// Метод, реализующий поиск для метода цепочек
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="moc"> массив списков </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <param name="mc"> делегат для подсчёта количества сравнений </param>
         public static void ChainMethodSearch(int[] array,
             List<int>[] moc, Func<int, int, int> method,
             Action mc)
@@ -25,7 +41,7 @@
                 int hash = method(num, array.Length);
                 for (int i = 0; i < moc[hash].Count; i++)
                 {
-                    mc(); // Заменить на делегат
+                    mc();
                     if (num == moc[hash][i])
                         break;
                 }
@@ -33,6 +49,13 @@
             }
         }
 
+        /// <summary>
+        /// Метод, реализующий вставку элементов для метода линейного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <returns> массив хешей </returns>
+        /// <exception cref="Exception"> ошибка переполнения массива </exception>
         public static int[] LinerProbingInsert(int[] array, Func<int, int, int> method)
         {
             int[] moa = new int[array.Length];
@@ -54,6 +77,13 @@
             return moa;
         }
 
+        /// <summary>
+        /// Метод, реализующий поиск для метода линейного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="moa"> массив хешей </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <param name="mc"> делегат для подсчёта количества сравнений </param>
         public static void LinerProbingSearch(int[] array, int[] moa,
             Func<int, int, int> method, Action mc)
         {
@@ -71,7 +101,14 @@
                 mc();
             }
         }
-        
+
+        /// <summary>
+        /// Метод, реализующий вставку элементов для метода квадратичного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method"> мтеод хеширования </param>
+        /// <param name="size"> размер исходного массива </param>
+        /// <returns> массив хешей </returns>
         public static int[] QuadraticProbingInsert(int[] array,
             Func<int, int, int> method, int size)
         {
@@ -97,6 +134,13 @@
             return moa;
         }
 
+        /// <summary>
+        /// Метод, реализующий поиск для метода квадратичного пробирования
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="moa"> массив хешей </param>
+        /// <param name="method"> метод хеширования </param>
+        /// <param name="mc"> делегат для подсчёта количества сравнений </param>
         public static void QuadraticProbingSearch(int[] array, int[] moa,
             Func<int, int, int> method, Action mc)
         {
@@ -116,6 +160,14 @@
             }
         }
 
+        /// <summary>
+        /// Метод, реализующий вставку элементов для метода двойного хеширования 
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="method1"> первый метод хеширования </param>
+        /// <param name="method2"> второй метод хеширования </param>
+        /// <returns> массив хешей </returns>
+        /// <exception cref="Exception"> ошибка переполнения массива </exception>
         public static int[] DoubleHashingInsert(int[] array,
             Func<int, int, int> method1, Func<int, int, int> method2)
         {
@@ -137,6 +189,14 @@
             return moa;
         }
 
+        /// <summary>
+        /// Метод, реализующий поиск для метода двойного хеширования 
+        /// </summary>
+        /// <param name="array"> исходный массив чисел </param>
+        /// <param name="moa"> массив хешей </param>
+        /// <param name="method1"> первый метод хеширования </param>
+        /// <param name="method2"> второй метод хеширования </param>
+        /// <param name="mc"> делегат для подсчёта количества сравнений </param>
         public static void DoubleHashingSearch(int[] array, int[] moa,
             Func<int, int, int> method1, Func<int, int, int> method2,
             Action mc)
