@@ -40,7 +40,6 @@ namespace WinFormsApp_Article.Services
                     CollisionAlgorithms.ChainMethodSearch(array, moc, method, mc
                     //() => 
                     //MeasurementServices.MeasureComparisons(chainResults.Сomparisons);
-                    
                     );
                 });
             });

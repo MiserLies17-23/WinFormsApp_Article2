@@ -11,16 +11,27 @@ namespace WinFormsApp_Article
     /// </summary>
     public partial class Article_Form : Form
     {
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public Article_Form()
         {
             InitializeComponent();
         }
         
+        /// <summary>
+        /// Загрузка формы
+        /// </summary>
+        /// <param name="sender"> отправитель (объект, вызвавший событие) </param>
+        /// <param name="e"> событие </param>
         private void Article_Form_Load(object sender, EventArgs e)
         {
             DataInitilize();
         }
 
+        /// <summary>
+        /// Метод иницаилизации строк таблицы
+        /// </summary>
         private void DataInitilize()
         {
             dataGridView1.RowCount = 4;
@@ -30,6 +41,11 @@ namespace WinFormsApp_Article
             dataGridView1.Rows[3].Cells[0].Value = "Двойное хеширование";
         }
 
+        /// <summary>
+        /// Событие для кнопки "Сравнить"
+        /// </summary>
+        /// <param name="sender"> отправитель ("клик") </param>
+        /// <param name="e"> событие </param>
         private void CompareButton_Click(object sender, EventArgs e)
         {
             try
@@ -51,6 +67,10 @@ namespace WinFormsApp_Article
             }
         }
 
+        /// <summary>
+        /// Метод для отображения результатов работы программы
+        /// </summary>
+        /// <param name="results"> список всех результатов </param>
         private void DisplayData(List<MethodResults> results)
         {
             dataGridView1.Rows.Clear();

@@ -28,9 +28,15 @@ namespace WinFormsApp_Article.Services
                                            // Для секунд нужно поделить на Stopwatch.Frequency
         }
 
-        public static void MeasureComparisons(int comparisons)
-        {
-            comparisons++;  
-        }
+        //public static void MeasureComparisons(int comparisons)
+        //{
+        //    comparisons++;  
+        //}
+
+        //public static Action CreateComparisonCounter(ref int counter)
+        //{
+        //    // Замыкание на переданную по ссылке переменную
+        //    return () => counter++;
+        //}
     }
 }
