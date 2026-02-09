@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using WinFormsApp_Article.Algorithms;
 
 namespace WinFormsApp_Article.Services
 {
@@ -37,7 +36,7 @@ namespace WinFormsApp_Article.Services
             var stopwatch = Stopwatch.StartNew();
             action();
             stopwatch.Stop();
-            return stopwatch.ElapsedTicks; // Результат в тиках
+            return stopwatch.ElapsedMilliseconds; // Результат в тиках
                                            // Для секунд нужно поделить на Stopwatch.Frequency
         }
     }

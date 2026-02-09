@@ -130,7 +130,7 @@
             // 
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             InsertTimeColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            InsertTimeColumn.HeaderText = "Время вставки";
+            InsertTimeColumn.HeaderText = "Время вставки (мс)";
             InsertTimeColumn.MinimumWidth = 6;
             InsertTimeColumn.Name = "InsertTimeColumn";
             InsertTimeColumn.Width = 125;
@@ -139,7 +139,7 @@
             // 
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             SearchTimeColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            SearchTimeColumn.HeaderText = "Время поиска";
+            SearchTimeColumn.HeaderText = "Время поиска (мс)";
             SearchTimeColumn.MinimumWidth = 6;
             SearchTimeColumn.Name = "SearchTimeColumn";
             SearchTimeColumn.Width = 125;

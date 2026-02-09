@@ -52,7 +52,7 @@ namespace WinFormsApp_Article
             {
                 Func<int, int, int> currentMethod = GetMethodsUtil.GetCurrentMethod(HashComboBox.Text);
                 int size = (int)SizeNumericUpDown.Value;
-                
+
                 MainService service = new();
                 var results = service.Run(size, currentMethod);
                 DisplayData(results);
